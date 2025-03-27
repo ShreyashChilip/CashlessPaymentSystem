@@ -1,3 +1,3 @@
-# flutter_application_1
+# Cashless Payment System for Schools
 
-A new Flutter project.
+The application is an implementation of cashless payment system for shcools, using RFID technology and blockchain.
