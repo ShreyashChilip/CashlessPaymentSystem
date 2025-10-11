@@ -1,0 +1,7 @@
+curl commmand
+
+curl -X POST http://localhost:3000/api/transfer -H "Content-Type: application/json" -d '{
+  "recipientWalletAddress": "<walletaddress>",
+  "amount": 1000,
+  "multiplier": 2
+}'
