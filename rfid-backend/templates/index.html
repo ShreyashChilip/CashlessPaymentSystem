@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RFID Card Reader</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        .card-container {
+            background-color: #f5f5f5;
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .status-indicator {
+            display: inline-block;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+        .active {
+            background-color: #4CAF50;
+        }
+        .inactive {
+            background-color: #F44336;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        button {
+            padding: 10px 15px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .hidden {
+            display: none;
+        }
+        #loading {
+            text-align: center;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>RFID Card Reader System</h1>
+    
+    <div class="card-container">
+        <h2>Current Status</h2>
+        <p>
+            <span class="status-indicator" id="statusIndicator"></span>
+            <span id="statusText">Checking status...</span>
+        </p>
+        <p id="cardInfo"></p>
+        <p id="lastDetected"></p>
+        
+        <button id="resetButton">Reset Status</button>
+    </div>
+    
+    <div class="card-container">
+        <h2>Recent Detections</h2>
+        <div id="loading">Loading...</div>
+        <table id="detectionTable" class="hidden">
+            <thead>
+                <tr>
+                    <th>Time</th>
+                    <th>Card UID</th>
+                </tr>
+            </thead>
+            <tbody id="detectionTableBody">
+                <!-- Detection history will be populated here -->
+            </tbody>
+        </table>
+    </div>
+    
+    <script>
+        // Function to update the status display
+        function updateStatus() {
+            fetch('/rfid-status')
+                .then(response => response.json())
+                .then(data => {
+                    // Update status indicator
+                    const statusIndicator = document.getElementById('statusIndicator');
+                    const statusText = document.getElementById('statusText');
+                    const cardInfo = document.getElementById('cardInfo');
+                    const lastDetected = document.getElementById('lastDetected');
+                    
+                    if (data.cardDetected) {
+                        statusIndicator.className = 'status-indicator active';
+                        statusText.textContent = 'Card Detected';
+                        cardInfo.textContent = `Card UID: ${data.cardUID}`;
+                    } else {
+                        statusIndicator.className = 'status-indicator inactive';
+                        statusText.textContent = 'No Card Detected';
+                        cardInfo.textContent = '';
+                    }
+                    
+                    if (data.lastDetectedAt) {
+                        lastDetected.textContent = `Last detected at: ${data.lastDetectedAt}`;
+                    } else {
+                        lastDetected.textContent = 'No recent detection';
+                    }
+                    
+                    // Update detection history table
+                    const tableBody = document.getElementById('detectionTableBody');
+                    tableBody.innerHTML = '';
+                    
+                    if (data.recentDetections && data.recentDetections.length > 0) {
+                        document.getElementById('loading').classList.add('hidden');
+                        document.getElementById('detectionTable').classList.remove('hidden');
+                        
+                        data.recentDetections.forEach(detection => {
+                            const row = document.createElement('tr');
+                            
+                            const timeCell = document.createElement('td');
+                            timeCell.textContent = detection.time;
+                            row.appendChild(timeCell);
+                            
+                            const uidCell = document.createElement('td');
+                            uidCell.textContent = detection.uid;
+                            row.appendChild(uidCell);
+                            
+                            tableBody.appendChild(row);
+                        });
+                    } else {
+                        document.getElementById('loading').textContent = 'No detection history';
+                    }
+                })
+                .catch(error => {
+                    console.error('Error fetching status:', error);
+                });
+        }
+        
+        // Set up reset button
+        document.getElementById('resetButton').addEventListener('click', function() {
+            fetch('/reset', {
+                method: 'POST',
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === 'success') {
+                    updateStatus();
+                }
+            })
+            .catch(error => {
+                console.error('Error resetting status:', error);
+            });
+        });
+        
+        // Update status initially and every 2 seconds
+        updateStatus();
+        setInterval(updateStatus, 2000);
+    </script>
+</body>
+</html>
