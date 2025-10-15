@@ -1,4 +1,4 @@
-<h1 align="center">💳 Cashless Payment System for Schools 🏫</h1>
+<h1 align="center">💳 Samay Pay:Cashless Payment System for Schools 🏫</h1>
 
 <p align="center">
     <img src="https://img.shields.io/badge/Platform-Flutter-blue?logo=flutter&logoColor=white">
@@ -8,7 +8,7 @@
 
 ## 🚀 Overview
 
-The **Cashless Payment System** is designed for schools to facilitate secure and efficient transactions using **RFID technology** and **Blockchain**. This system helps students, parents, and administrators manage funds seamlessly while ensuring transparency and security.
+The **Samay Pay** is designed for schools to facilitate secure and efficient transactions using **RFID technology** and **Blockchain**. This system helps students, parents, and administrators manage funds seamlessly while ensuring transparency and security.
 
 ---
 
