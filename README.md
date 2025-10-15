@@ -1,4 +1,4 @@
-<h1 align="center">💳 Cashless Payment System for Schools 🏫</h1>
+<h1 align="center">💳 Samay Pay:Cashless Payment System for Schools 🏫</h1>
 
 <p align="center">
     <img src="https://img.shields.io/badge/Platform-Flutter-blue?logo=flutter&logoColor=white">
@@ -8,7 +8,7 @@
 
 ## 🚀 Overview
 
-The **Cashless Payment System** is designed for schools to facilitate secure and efficient transactions using **RFID technology** and **Blockchain**. This system helps students, parents, and administrators manage funds seamlessly while ensuring transparency and security.
+The **Samay Pay** is designed for schools to facilitate secure and efficient transactions using **RFID technology** and **Blockchain**. This system helps students, parents, and administrators manage funds seamlessly while ensuring transparency and security.
 
 ---
 
@@ -97,3 +97,24 @@ Feel free to use and contribute! 🙌
 ---
 
 <h3 align="center">Built with 💙</h3>
+
+## 🤝 Collaborators
+
+Thanks to the following collaborators for their contributions:
+
+
+<p align="left">
+    <a href="https://github.com/tester248">
+        <img src="https://github.com/tester248.png" alt="tester248" width="40" height="40" style="border-radius:50%;" />
+    </a>
+    &nbsp;
+    <a href="https://github.com/sidemen7z">
+        <img src="https://github.com/sidemen7z.png" alt="sidemen7z" width="40" height="40" style="border-radius:50%;" />
+    </a>
+    &nbsp;
+    <a href="https://github.com/RamBelitkar">
+        <img src="https://github.com/RamBelitkar.png" alt="RamBelitkar" width="40" height="40" style="border-radius:50%;" />
+    </a>
+</p>
+
+
