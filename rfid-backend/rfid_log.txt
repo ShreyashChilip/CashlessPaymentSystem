@@ -1,0 +1,12 @@
+2025-03-22 23:38:26: RFID server started
+2025-03-22 23:44:01: Card 3338EBF5 detected
+2025-03-22 23:44:25: Card 3338EBF5 detected
+2025-03-22 23:44:26: Card 3338EBF5 detected
+2025-03-22 23:44:36: Card 63719EC5 detected
+2025-03-22 23:47:07: Card 3338EBF5 detected
+2025-03-22 23:48:46: Card 3338EBF5 detected
+2025-03-22 23:57:07: Card 3338EBF5 detected
+2025-03-22 23:57:09: Card 3338EBF5 detected
+2025-03-22 23:57:11: Card 3338EBF5 detected
+2025-03-22 23:58:07: Card 3338EBF5 detected
+2025-03-23 00:00:47: Card 3338EBF5 detected

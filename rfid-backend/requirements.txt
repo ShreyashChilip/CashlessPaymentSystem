@@ -1,0 +1,5 @@
+pyserial
+firebase-admin
+flask
+flask-socketio
+python-socketio
